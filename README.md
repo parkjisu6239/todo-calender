@@ -1,46 +1,83 @@
-# Getting Started with Create React App
+# Web basic
+프로젝트를 진행하기 위한 초기세팅을 완료한 repo입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 주요 라이브러리
+> node version 16.31.1
 
-## Available Scripts
+- react
+- eslint
+- prettier
+- react-router
+- storybook
 
-In the project directory, you can run:
+자세한 dependency는 package.json 참고.
 
-### `npm start`
+## 환경 설정 상세
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<details>
+<summary>react</summary>
+    
+```bash
+npx create-react-app my-app --tempalte typescript
+```
+- `reate-react-app` 으로 설치 후, 사용하지 않는 라이브러리 제거
+</details>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<details>
+<summary>ESLint</summary>
+    
+```bash
+npm install eslint --save-dev
+```
 
-### `npm run build`
+- 대화형으로 옵션을 선택할 수 있다.  이후에 ts를 위한 추가 설정이 필요하다. 다음 블로그를 참고하여 작성했다.
+- 설정된 옵션은 `.eslintrc.json` 애서 확인할 수 있으며 원하는 옵션을 추가/제거 할 수 있다.
+- 타입스크립트를 사용하여 추가된 설정들이 많다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+참고링크
+- https://velog.io/@he0_077/React-Typescript-eslint-prettier-%EC%84%A4%EC%A0%95
+- https://dev-yakuza.posstree.com/ko/react/eslint/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+</details>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+<details>
+<summary>prettier</summary>
+    
+```bash
+npm install --save-dev --save-exact prettier
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ESLint와 충돌이 있을 수 있다.
+- 설정된 옵션은 `.prettier.json` 애서 확인할 수 있으며 원하는 옵션을 추가/제거 할 수 있다.
+- 검사를 원하지 않는 파일은 `.prettierignore`에 추가하면 된다.
+- vscode setting을 추가적으로 해야될 수도 있다.
+</details>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<details>
+<summary>react-router</summary>
+    
+```bash
+npm install react-router-dom@6
+```
 
-## Learn More
+- [공식문서](https://reactrouter.com/docs/en/v6/getting-started/installation)
+- 모든 라우터는 routes.tsx에 연결되어 있다. 
+- 모든 컴포넌트는 App으로 감싼다.
+</details>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<details>
+<summary>Storybook</summary>
+    
+```
+npx sb init
+``` 
+- [공식문서](https://storybook.js.org/docs/react/get-started/install)
+- stories 라는 폴더에 스토리파일을 모두 모아도 되지만, 파일 구조를 component와 똑같이 맞추려면 결국 복잡해져서 컴포넌트 폴더에 같이 두었다.
+- 빌드 옵션으로 스토리파일을 제거하면, 빌드에 영향을 주지 않는다.
+</details>
