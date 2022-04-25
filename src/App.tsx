@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import "./App.css";
 
-const App: React.FC = () => {
+function App() {
   return (
     <div className="App">
       <header>Navbar</header>
@@ -12,6 +12,6 @@ const App: React.FC = () => {
       <footer>Footer</footer>
     </div>
   );
-};
+}
 
 export default App;
