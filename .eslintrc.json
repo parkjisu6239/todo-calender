@@ -20,12 +20,12 @@
   "plugins": ["react", "@typescript-eslint", "react-hooks", "functional"],
   "rules": {
     // General
-    "no-console": "error",
+    "no-console": 0,
     "comma-dangle": ["error", "never"],
     "max-len": ["warn", { "code": 80 }],
-    "arrow-body-style": ["error", "always"],
     "quotes": ["error", "double", { "allowTemplateLiterals": true }],
-
+    "arrow-body-style": ["error", "as-needed"],
+    
     // TypeScript
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/explicit-member-accessibility": "off",
@@ -93,9 +93,11 @@
     "react/destructuring-assignment": "off",
     "react/function-component-definition": "off",
 
+    // Html
+    // "jsx-a11y/label-has-associated-control": "error",
+
     "import/extensions": [
       "error",
-      "ignorePackages",
       {
         "ts": "never",
         "tsx": "never"
