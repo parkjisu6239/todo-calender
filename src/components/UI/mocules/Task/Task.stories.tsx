@@ -8,7 +8,9 @@ export default {
   args: {
     id: "1",
     content: "리액트 공부하기",
-    handleCheckbox: () => console.log("click")
+    handleCheckbox: () => console.log("click"),
+    setEditMode: (value) => console.log(value),
+    changeContent: (value) => console.log(value)
   }
 } as ComponentMeta<typeof Task>;
 

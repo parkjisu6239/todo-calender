@@ -1,6 +1,5 @@
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import { css, cx } from "@emotion/css";
-import { MdModeEdit } from "react-icons/md";
 import { IoTrash } from "react-icons/io5";
 import Checkbox from "../../atoms/Checkbox";
 
@@ -15,6 +14,10 @@ const defaultInputCss = css`
   width: inherit;
   background-color: transparent;
   border: transparent;
+  &:focus {
+    outline: none;
+    border-bottom: solid 1px #56a5ff;
+  }
 `;
 
 const isDoneInputCss = css`
@@ -28,9 +31,25 @@ interface Props {
   handleCheckbox: () => void;
   content: string;
   isEditing: boolean;
+  setEditMode: (value: boolean) => void;
+  changeContent: (content: string) => void;
 }
 
 function Task(props: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [taskContent, setTaskContent] = useState(props.content);
+
+  useEffect(() => {
+    if (inputRef.current != null && props.isEditing) {
+      inputRef.current.focus();
+    }
+  }, [props.isEditing]);
+
+  const complteEdit = () => {
+    props.changeContent(taskContent);
+    props.setEditMode(false);
+  };
+
   return (
     <span className={taskCss}>
       <Checkbox
@@ -39,14 +58,21 @@ function Task(props: Props) {
         handleCheckbox={props.handleCheckbox}
       />
       <input
-        className={cx(defaultInputCss, { [isDoneInputCss]: props.isDone })}
+        ref={inputRef}
+        className={cx(
+          defaultInputCss,
+          { [isDoneInputCss]: props.isDone }
+        )}
         type="text"
-        value={props.content}
+        value={taskContent}
         readOnly={!props.isEditing}
-        disabled={!props.isEditing}
+        disabled={props.isDone}
+        onChange={(e) => setTaskContent(e.target.value)} // 인풋 수정
+        onFocus={() => props.setEditMode(true)} // 수정 모드
+        onBlur={complteEdit} // 변경 사항 저장 & 수정 모드 해제
       />
-      <MdModeEdit />
-      <IoTrash />
+      {/* TODO: delete
+      <IoTrash /> */}
     </span>
   );
 }
