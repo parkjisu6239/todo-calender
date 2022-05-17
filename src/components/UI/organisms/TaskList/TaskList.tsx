@@ -1,56 +1,45 @@
-import type { ChangeEvent } from "react";
-import { useState } from "react";
 import Task from "../../mocules/Task";
 
 interface TaskItem {
   id: string;
   isDone: boolean;
-  handleCheckbox: () => void;
   content: string;
   isEditing: boolean;
-  setEditMode: (value: boolean) => void;
-  onChange: (e: ChangeEvent) => void;
 }
 
 interface Props {
   tasks: TaskItem[];
+  loading?: boolean;
+  handleCheckbox: (idx: number) => void;
+  setEditMode: (idx:number, value: boolean) => void;
+  changeContent: (index:number, content: string) => void;
 }
 
-type TaskKey = "isDone" | "content" | "isEditing"
+function TaskList({
+  tasks,
+  loading = false,
+  handleCheckbox,
+  setEditMode,
+  changeContent
+}: Props) {
+  const LoadingRow = (
+    <div className="loading-item">
+      <span className="glow-checkbox" />
+      <span className="glow-text">
+        <span>Loading</span> <span>cool</span> <span>state</span>
+      </span>
+    </div>
+  );
 
-function TaskList() {
-  const [tasks, setTask] = useState([
-    {
-      id: "1",
-      isDone: false,
-      content: "리액트 공부",
-      isEditing: false
-    }
-  ]);
-
-  const handleCheckbox = (index: number) => {
-    const tempTasks = [...tasks];
-    const tempTask = { ...tempTasks[index] };
-    tempTask.isDone = !tempTask.isDone;
-    tempTasks[index] = tempTask;
-    setTask(tempTasks);
-  };
-
-  const setEditMode = (index: number, value: boolean) => {
-    const tempTasks = [...tasks];
-    const tempTask = { ...tempTasks[index] };
-    tempTask.isEditing = value;
-    tempTasks[index] = tempTask;
-    setTask(tempTasks);
-  };
-
-  const changeContent = (index: number, content: string) => {
-    const tempTasks = [...tasks];
-    const tempTask = { ...tempTasks[index] };
-    tempTask.content = content;
-    tempTasks[index] = tempTask;
-    setTask(tempTasks);
-  };
+  if (loading) {
+    return (
+      <div className="list-items" data-testid="loading" key="loading">
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+      </div>
+    );
+  }
 
   return (
     <div>

@@ -92,6 +92,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/destructuring-assignment": "off",
     "react/function-component-definition": "off",
+    "react/jsx-one-expression-per-line": "off",
 
     // Html
     // "jsx-a11y/label-has-associated-control": "error",
