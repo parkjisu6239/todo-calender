@@ -1,11 +1,39 @@
 import * as React from "react";
-import { css } from "@emotion/css";
+import { css, keyframes } from "@emotion/css";
 import Task from "components/UI/mocules/Task";
 
 const taskListCss = css`
   display: flex;
   flex-direction: column;
   gap: 5px;
+`;
+
+const loadingItemCss = css`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`;
+
+const glowBackground = keyframes`
+  0% {background-color: #e1e1e1}
+  50% {background-color: #ececec}
+  100% {background-color: #e1e1e1}
+`;
+
+const glowCheckboxCss = css`
+  display: block;
+  width: 15px;
+  height: 15px;
+  animation: ${glowBackground} 2s ease infinite;
+  border-radius: 2px;
+`;
+
+const glowTextCss = css`
+  & span {
+    color: transparent;
+    border-radius: 3px;
+    animation: ${glowBackground} 2s ease infinite;
+  }
 `;
 
 interface TaskItem {
@@ -31,9 +59,9 @@ function TaskList({
   changeContent
 }: Props) {
   const LoadingRow = (
-    <div className="loading-item">
-      <span className="glow-checkbox" />
-      <span className="glow-text">
+    <div className={loadingItemCss}>
+      <span className={glowCheckboxCss} />
+      <span className={glowTextCss}>
         <span>Loading</span> <span>cool</span> <span>state</span>
       </span>
     </div>
@@ -41,7 +69,7 @@ function TaskList({
 
   if (loading) {
     return (
-      <div className="list-items" data-testid="loading" key="loading">
+      <div className={taskListCss} data-testid="loading" key="loading">
         {LoadingRow}
         {LoadingRow}
         {LoadingRow}
