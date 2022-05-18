@@ -6,5 +6,8 @@
     "source.fixAll.eslint": true
   },
   "javascript.format.enable": false,
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

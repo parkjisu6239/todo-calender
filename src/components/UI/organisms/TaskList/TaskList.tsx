@@ -1,4 +1,12 @@
-import Task from "@/components/UI/mocules/Task";
+import * as React from "react";
+import { css } from "@emotion/css";
+import Task from "components/UI/mocules/Task";
+
+const taskListCss = css`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
 
 interface TaskItem {
   id: string;
@@ -42,7 +50,7 @@ function TaskList({
   }
 
   return (
-    <div>
+    <div className={taskListCss}>
       {tasks.map((task, idx) => (
         <Task
           key={task.id}
