@@ -1,4 +1,4 @@
-import Task from "../../mocules/Task";
+import Task from "@/components/UI/mocules/Task";
 
 interface TaskItem {
   id: string;

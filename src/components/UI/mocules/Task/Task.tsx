@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { css, cx } from "@emotion/css";
 import { IoTrash } from "react-icons/io5";
-import Checkbox from "../../atoms/Checkbox";
+import Checkbox from "@/components/UI/atoms/Checkbox";
 
 const taskCss = css`
   display: flex;

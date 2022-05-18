@@ -17,6 +17,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
+  "ignorePatterns": ["webpack.config.js"],
   "plugins": ["react", "@typescript-eslint", "react-hooks", "functional"],
   "rules": {
     // General
@@ -25,6 +26,7 @@
     "max-len": ["warn", { "code": 80 }],
     "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "arrow-body-style": ["error", "as-needed"],
+    "import/no-unresolved": "off",
     
     // TypeScript
     "@typescript-eslint/consistent-type-imports": "error",
@@ -93,7 +95,7 @@
     "react/destructuring-assignment": "off",
     "react/function-component-definition": "off",
     "react/jsx-one-expression-per-line": "off",
-
+    
     // Html
     // "jsx-a11y/label-has-associated-control": "error",
 

@@ -11,8 +11,7 @@
     "react-dom": "18.0.0",
     "react-icons": "4.3.1",
     "react-router-dom": "6.3.0",
-    "react-scripts": "5.0.1",
-    "typescript": "4.6.3"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -75,6 +74,8 @@
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.4.0",
     "prettier": "2.6.2",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.4",
     "webpack": "5.72.0"
   }
 }
